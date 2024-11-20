@@ -46,8 +46,8 @@ class KeycloakService:
         )
         self.admin = KeycloakAdmin(
             server_url=settings.KEYCLOAK_SERVER_URL + "/auth",
-            username="dios",
-            password="dios",
+            username="admin",
+            password="admin",
             realm_name=settings.KEYCLOAK_REALM,
             user_realm_name="master",
         )
