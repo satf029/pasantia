@@ -6,5 +6,4 @@ app_name = 'eprof'
 
 urlpatterns = [
     path('',views.login,name='login')
-
 ]
