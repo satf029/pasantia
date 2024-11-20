@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+    container_name: django_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DEBUG=1
+      - DJANGO_SECRET_KEY=django-insecure-3+8w0)k(w6+0-s#2six43-r^9bnwg&u5aioqvt+uo4=o8v4ad8
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: django_db
+    ports:
+      - "5432:5432"
