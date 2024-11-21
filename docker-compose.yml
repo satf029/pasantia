@@ -7,11 +7,11 @@ services:
     ports:
       - "8000:8000"
     networks:
-      - my_network  # Corregido el espacio entre el guion y el nombre de la red
+      - my_network
     environment:
       - DEBUG=1
       - DJANGO_SECRET_KEY=django-insecure-3+8w0)k(w6+0-s#2six43-r^9bnwg&u5aioqvt+uo4=o8v4ad8
-
+      - KEYCLOAK_SERVER_URL=http://keycloak:8080
   db:
     image: postgres:15
     container_name: postgres_db
@@ -22,7 +22,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - my_network  # Corregido el espacio entre el guion y el nombre de la red
+      - my_network
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
@@ -39,7 +39,7 @@ services:
     command: 
       - start-dev
     networks:
-      - my_network  # Corregido el espacio entre el guion y el nombre de la red
+      - my_network
 
 volumes:
   postgres_data:

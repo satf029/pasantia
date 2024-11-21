@@ -16,7 +16,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"), override=True)
-KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL")
+KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL","http://keycloak:8080")
 KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM")
 KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID")
 KEYCLOAK_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
@@ -31,7 +31,11 @@ SECRET_KEY = 'django-insecure-3+8w0)k(w6+0-s#2six43-r^9bnwg&u5aioqvt+uo4=o8v4ad8
 DEBUG = os.getenv('DEBUG', '0') == '1'
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY','django-insecure-3+8w0)k(w6+0-s#2six43-r^9bnwg&u5aioqvt+uo4=o8v4ad8' )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '*'
+]
 
 
 # Application definition
