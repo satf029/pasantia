@@ -7,9 +7,8 @@ from django.http import HttpResponse
 def login(request):
     kc=KeycloakService.get_instance()
     authorization_url=kc.openid.auth_url(
-        redirect_uri="http://localhost:8000/",
-        scope="openid profile email ",
-        
+        redirect_uri="http://localhost:8000",
+        scope="openid profile email"
     )
     
     return redirect(authorization_url)

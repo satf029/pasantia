@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    "eprof.middleware.token_middleware.KeycloakTokenMiddleware"
 ]
 
 ROOT_URLCONF = 'sso.urls'
@@ -75,6 +75,9 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+]
 WSGI_APPLICATION = 'sso.wsgi.application'
 
 

@@ -2,15 +2,12 @@ version: "3.9"
 
 services:
   web:
-    build:
-      context: .
+    build: .
     container_name: django_app
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
-    depends_on:
-      - db
+    networks:
+      - my_network  # Corregido el espacio entre el guion y el nombre de la red
     environment:
       - DEBUG=1
       - DJANGO_SECRET_KEY=django-insecure-3+8w0)k(w6+0-s#2six43-r^9bnwg&u5aioqvt+uo4=o8v4ad8
@@ -24,3 +21,29 @@ services:
       POSTGRES_DB: django_db
     ports:
       - "5432:5432"
+    networks:
+      - my_network  # Corregido el espacio entre el guion y el nombre de la red
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://db:5432/django_db
+      - KC_DB_USERNAME=postgres
+      - KC_DB_PASSWORD=postgres
+    ports:
+      - "8080:8080"
+    command: 
+      - start-dev
+    networks:
+      - my_network  # Corregido el espacio entre el guion y el nombre de la red
+
+volumes:
+  postgres_data:
+
+networks:
+  my_network:
+    driver: bridge
