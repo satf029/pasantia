@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.conf import settings
 from eprof.services.keycloak_service import KeycloakService
-
+from django.http import HttpResponse
 
 # Create your views here.
 def login(request):
     kc=KeycloakService.get_instance()
     authorization_url=kc.openid.auth_url(
-        scope="openid profile email ",
         redirect_uri="http://localhost:8000/",
+        scope="openid profile email ",
+        
     )
-
-    return render(request,"login.html") 
+    
+    return redirect(authorization_url)
