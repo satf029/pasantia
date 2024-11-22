@@ -39,13 +39,13 @@ class KeycloakService:
         Configura los clientes KeycloakOpenID y KeycloakAdmin usando las configuraciones del entorno.
         """
         self.openid = KeycloakOpenID(
-            server_url=settings.KEYCLOAK_SERVER_URL + "/auth",
+            server_url=settings.KEYCLOAK_SERVER_URL,
             client_id=settings.KEYCLOAK_CLIENT_ID,
             realm_name=settings.KEYCLOAK_REALM,
             client_secret_key=settings.KEYCLOAK_CLIENT_SECRET,
         )
         self.admin = KeycloakAdmin(
-            server_url=settings.KEYCLOAK_SERVER_URL + "/auth",
+            server_url=settings.KEYCLOAK_SERVER_URL,
             username="admin",
             password="admin",
             realm_name=settings.KEYCLOAK_REALM,
@@ -69,7 +69,7 @@ class KeycloakService:
         :return: Un diccionario con el token de acceso y otros datos relacionados.
         :rtype: dict
         """
-        redirect_uri = settings.DJ_URL + ":" + settings.DJ_PORT + "/callback/"
+        redirect_uri = "http://localhost:8000/callback/"
         token = self.openid.token(
             code=code, redirect_uri=redirect_uri, grant_type="authorization_code"
         )

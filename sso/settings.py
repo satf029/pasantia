@@ -32,9 +32,6 @@ DEBUG = os.getenv('DEBUG', '0') == '1'
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY','django-insecure-3+8w0)k(w6+0-s#2six43-r^9bnwg&u5aioqvt+uo4=o8v4ad8' )
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '*'
 ]
 
 
@@ -97,10 +94,10 @@ WSGI_APPLICATION = 'sso.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'django_db'),
-        'USER': os.getenv('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
-        'HOST': 'db',
+        'NAME': 'django_db',  # Asegúrate de que este nombre coincida con el de tu base de datos
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',  # Este es el nombre del servicio en tu docker-compose.yml
         'PORT': '5432',
     }
 }
