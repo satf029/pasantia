@@ -174,7 +174,7 @@ def obtenerUserId(token):
     # return payload["sub"]
 
 
-def decode_token(token, audience="cmsweb", verify_exp=True):
+def decode_token(token, audience="sso", verify_exp=True):
     public_key = settings.KEYCLOAK_RS256_PUBLIC_KEY
     public_key = re.sub(r"\\n", "\n", public_key)
     # Decodifica sin validar la audiencia para inspeccionarla

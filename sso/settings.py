@@ -20,7 +20,7 @@ KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL","http://keycloak:8080")
 KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM")
 KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID")
 KEYCLOAK_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
-
+KEYCLOAK_RS256_PUBLIC_KEY = os.getenv("KEYCLOAK_RS256_PUBLIC_KEY")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
