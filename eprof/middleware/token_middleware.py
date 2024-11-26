@@ -45,7 +45,7 @@ class KeycloakTokenMiddleware:
             comprobarToken(request, token)
         except Exception as e:
             print("El token ya expiró, redirigiendo a la página de inicio")
-            return redirect('logout')
+            return redirect('eprof:logout')
 
 
         return self.get_response(request)
