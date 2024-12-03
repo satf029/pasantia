@@ -34,7 +34,7 @@ class KeycloakTokenMiddleware:
         
         """
         # Omitir la verificación del token en la ruta de logout
-        if request.path == '/logout/':
+        if request.path == '/logout':
             return self.get_response(request)
         
         # Obtener token de la cache o la sesión
